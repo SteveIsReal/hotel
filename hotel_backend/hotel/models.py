@@ -24,4 +24,4 @@ class Booking(models.Model):
     room_type = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.customers} / {self.room_type} ( {self.book_date} - {self.end_date} )'
+        return f'{[f"{i.first_name} {i.last_name}" for i in self.customers.all()]} / {self.room_type} ( {self.book_date} - {self.end_date} )'
